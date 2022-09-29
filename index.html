@@ -27,7 +27,7 @@
       <h1>G-MARKET</h1>
     </header>
     <div class="searchBox">
-      <input type="text" id="txtSearch">
+      <input type="text" id="txtSearch" />
       <button id="btnSearch"></button>
     </div>
     <main id="main">
@@ -41,30 +41,27 @@
           <div></div>
         </div>
       </div>
-      <ul class="shopList">
-       
-      </ul>
-      </div>
+      <ul class="shopList"></ul>
     </main>
   </body>
   <script>
-   const shoppingList = $(".shopList")
-   const searchItem = $("#txtSearch").val()
-   $("#btnSearch").on("click",function(){
-    search(searchItem)
-  })
-  $("#txtSearch").on("keydown",(e)=>{
-    if(e.key === "Enter"){
-      search(searchItem)
-    }
-  })
-  function search(search) {
-  gsap.to($(".loading"),{opacity:1})
-  $.ajax({url:`http://127.0.0.1:8099/gmarket/${search}`}).done(function(response){
-    // console.log(response)
-    let tempHtml=""
-    $.each(response,(idx,item)=>{
-      tempHtml+=`<li>
+    const shoppingList = $(".shopList");
+    const searchItem = $("#txtSearch").val();
+    $("#btnSearch").on("click", function () {
+      search(searchItem);
+    });
+    $("#txtSearch").on("keydown", (e) => {
+      if (e.key === "Enter") {
+        search(searchItem);
+      }
+    });
+    function search(search) {
+      gsap.to($(".loading"), { opacity: 1 });
+      $.ajax({ url: `http://kkeonwoo-gmarket.herokuapp.com/gmarket/${search}` }).done(function (response) {
+        // console.log(response)
+        let tempHtml = "";
+        $.each(response, (idx, item) => {
+          tempHtml += `<li>
           <a href="${item.link}" target="_blanck">
             <div class="img">
               <img src="${item.image}">
@@ -75,15 +72,15 @@
             </div>
           </a>
         </li>
-      `
-      let total = response.length
-      $("#main >p span").text(`${total}`)
-    })
-    shoppingList.html(tempHtml)
-    shoppingList.imagesLoaded().always(function(){
-      $(".total").css({display:"block"})
-    })
-  })
-}
+      `;
+          let total = response.length;
+          $("#main >p span").text(`${total}`);
+        });
+        shoppingList.html(tempHtml);
+        shoppingList.imagesLoaded().always(function () {
+          $(".total").css({ display: "block" });
+        });
+      });
+    }
   </script>
 </html>
