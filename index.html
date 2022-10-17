@@ -47,19 +47,20 @@
   </body>
   <script>
     const shoppingList = $(".shopList");
-    const searchItem = $("#txtSearch").val();
     $("#btnSearch").on("click", function () {
+      const searchItem = $("#txtSearch").val();
       search(searchItem);
     });
     $("#txtSearch").on("keydown", (e) => {
       if (e.key === "Enter") {
+        const searchItem = $("#txtSearch").val();
         search(searchItem);
       }
     });
     function search(search) {
       gsap.to($(".loading"), { opacity: 1 });
       $.ajax({ url: `http://kkeonwoo-gmarket.herokuapp.com/gmarket/${search}` }).done(function (response) {
-        // console.log(response)
+        console.log(response);
         let tempHtml = "";
         $.each(response, (idx, item) => {
           tempHtml += `<li>
