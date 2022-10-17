@@ -112,7 +112,8 @@ a {
 #main .shopList > li a .img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #main .shopList > li .info {
   position: relative;
@@ -121,7 +122,7 @@ a {
   color: #999;
   margin-top: 20px;
 }
-#main .shopList > li .info h3 {
+#main .shopList > li .info .title {
   word-break: keep-all;
   display: -webkit-box;
   height: 3em;
@@ -186,26 +187,25 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   pointer-events: none;
 }
 @-webkit-keyframes meetup {
   0%, 100% {
-    -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
     transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
   }
   50% {
-    -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
     transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
   }
 }
 @keyframes meetup {
   0%, 100% {
-    -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
     transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
   }
   50% {
-    -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
     transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
   }
 }
@@ -238,13 +238,11 @@ a {
 }
 @-webkit-keyframes spin {
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes spin {
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }

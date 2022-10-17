@@ -119,7 +119,7 @@ a {
           color: #999;
           margin-top: 20px;
         }
-        h3 {
+        .title {
           word-break: keep-all;
           @include multiEllipsis(2, 1.5);
           font-size: 22px;
